@@ -1,12 +1,12 @@
 export default class Clock {
     constructor( parentElementName = '.clock', serverSkew = 0 ) {
         this.serverSkew = serverSkew;
-        this.makeClock( document.querySelector( parentElementName ) );
+        this.#makeClock( document.querySelector( parentElementName ) );
 
-        this.update();
+        this.#update();
     }
 
-    makeClock( parentElement ) {
+    #makeClock( parentElement ) {
         const ratioElem = document.createElement( 'div' );
         ratioElem.classList.add( 'ratio' );
 
@@ -49,7 +49,7 @@ export default class Clock {
         parentElement.appendChild( ratioElem );
     }
 
-    update() {
+    #update() {
         const timeScale = 30; // the "magic" behind the clock this scales real time to RDRO time
         const secs = ( Date.now() / 1000 ) * timeScale - this.serverSkew; // convert to RDR time ratio
         const tau = Math.PI * 2;
@@ -67,6 +67,6 @@ export default class Clock {
         this.minHandElem.style.transform = 'rotate( ' + spinMin + 'rad )';
         this.nightDayElem.style.transform = 'translate( -50%, -50% ) rotate( ' + spinDayNight + 'rad )';
 
-        requestAnimationFrame( this.update.bind( this ) );
+        requestAnimationFrame( this.#update.bind( this ) );
     }
 }
