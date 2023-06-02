@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Red Dead Online Clock</title>
+    <style type="text/css">
+        :root {
+            --bodyBG: #111;
+            --clockBG: #242424;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            padding: 5%;
+            background-color: var( --bodyBG );
+        }
+
+        .rdro-clock {
+            width: 100%;
+            height: 100%;
+            margin: 0 auto;
+            resize: both;
+        }
+
+        .rdro-clock .ratio {
+            background-color: var( --clockBG );
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            overflow: hidden;
+            border-radius: 50%;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            aspect-ratio: 1/1;
+            border: 0.3em solid #fff;
+        }
+
+        .rdro-clock img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .rdro-clock .ratio > div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 1/1;
+        }
+
+        .rdro-clock .ratio .hrHand,
+        .rdro-clock .ratio .minHand {
+            filter: drop-shadow( 0 0 0.3em #000 );
+        }
+
+        .rdro-clock .ratio .hrHand {
+            z-index: 2;
+            padding: 5%;
+        }
+
+        .rdro-clock .ratio .minHand {
+            z-index: 3;
+            padding: 3.5%;
+        }
+
+        .rdro-clock .ratio .nightDay {
+            width: 28.5%;
+            height: 28.5%;
+            left: 48.9%;
+            top: 77.5%;
+        }
+
+        .rdro-clock .ratio .pivot {
+            z-index: 4;
+            width: 5%;
+            height: 5%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="rdro-clock"></div>
+    <script defer type="module" src="js/clock.mjs"></script>
+    <script defer type="module" src="js/main.mjs"></script>
+</body>
+</html>
